@@ -1,2 +1,3 @@
-# my-profile
-This is my professional portfolio
+# Patrick Lang's Portfolio
+
+This is my professional portfolio. It uses AWS and ReactJS.
