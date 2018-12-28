@@ -9,6 +9,6 @@ artifacts:
   files:
     - index.html
     - favicon.ico
-    - *.pdf
+    - AWS*.pdf
     - styles/*
     - images/*
