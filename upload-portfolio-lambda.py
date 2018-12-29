@@ -16,20 +16,21 @@ def lambda_handler(event, context):
         "objectKey": "portfoliobuild.zip"
     }
     try:
-        job = event.get('CodePipeline.job')
+        job = event.get("CodePipeline.job")
 
         if job:
             for artifact in job["data"]["inputArtifacts"]:
-                if artifact["name"] == "MyAppBuild":
-                    location = artifact["location"]["s3location"]
+                print artifact["name"]
+                if artifact["name"] == "BuildArtifact":
+                    location = artifact["location"]["s3Location"]
 
         print "Building portfolio from " + str(location)
 
         portfolio_bucket = s3.Bucket('portfolio.patricklang.net')
-        build_bucket = s3.Bucket('portfoliobuild.patricklang.net')
+        build_bucket = s3.Bucket(location["bucketName"])
 
         portfolio_zip = StringIO.StringIO()
-        build_bucket.download_fileobj('portfoliobuild.zip', portfolio_zip)
+        build_bucket.download_fileobj(location["objectKey"], portfolio_zip)
 
         with zipfile.ZipFile(portfolio_zip) as myzip:
             for nm in myzip.namelist():
