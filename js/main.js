@@ -28,6 +28,6 @@ const myWork = [
                   https://www.flickr.com/photos/37287295@N00/2540855181`
     }
   }
-]
+];
 
 ReactDOM.render(<ExampleWork work={myWork}/>, document.getElementById('example_work'));
